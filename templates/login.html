@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from spruko.com/demo/adon/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Dec 2018 09:46:44 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Fully Responsive Bootstrap 4 Admin Dashboard Template">
+	<meta name="author" content="Creative Tim">
+
+	<!-- Title -->
+	<title>Parcel Tracker - Login</title>
+
+	<!-- Favicon -->
+	<link href="{% static 'assets/img/logo.png'%}" rel="icon" type="image/png">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">
+
+	<!-- Icons -->
+	<link href="{% static 'assets/css/icons.css'%}" rel="stylesheet">
+
+	<!--Bootstrap.min css-->
+	<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css'%}">
+
+	<!-- Adon CSS -->
+	<link href="{% static 'assets/css/dashboard.css'%}" rel="stylesheet" type="text/css">
+
+	<!-- Single-page CSS -->
+	<link href="{% static 'assets/plugins/single-page/css/main.css'%}" rel="stylesheet" type="text/css">
+
+	
+	<style>
+
+			.google-btn {
+			  width: 290px;
+			  height: 51px;
+			  background-color:#4285f4;
+			  border-radius: 25px;
+			  box-shadow: 0 3px 4px 0 rgba(0,0,0,.25);
+			}
+			  .google-icon-wrapper {
+				position: absolute;
+				margin-top: 6px;
+				margin-left: 7px;
+				width: 40px;
+				height: 40px;
+				border-radius: 25px;
+				background-color: #fff;
+			  }
+			  .google-icon {
+				position: absolute;
+				margin-top: 11px;
+				margin-left: 11px;
+				width: 18px;
+				height: 18px;
+			  }
+			  .btn-text {
+				padding-top: 10px;
+				text-align: center;
+				align-self: center;
+				color: #fff;
+				font-size: 18px;
+				letter-spacing: 0.2px;
+			
+			  }
+			  .google-btn:hover {
+				box-shadow: 0 0 6px #4285f4;
+			  }
+			  .google-btn:active {
+				background: #1669F2;
+			  }
+			
+					  
+				</style>
+
+
+</head>
+
+<body class="bg-gradient-primary">
+	<div class="limiter">
+		<div class="container-login100">
+				
+			<div class="wrap-login100 p-5">
+				<form class="login100-form validate-form" action="{% url 'login' %}" method="POST">
+					{% csrf_token%}
+					<div class="logo-img text-center pb-3">
+						<img src="{% static 'assets/img/full-logo.png'%}" alt="logo-img">
+					</div>
+					<span class="login100-form-title">
+						User Login
+					</span>
+
+					{% if messages %}
+		  {% for message in messages %}
+		  {% if message.tags == 'error'%}
+
+		  <div class="alert alert-danger alert-dismissible fade show mb-2" role="alert">
+							
+				<span class="alert-inner--text">{{message}}</span>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+					
+			{% else %}
+			<div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+							
+					<span class="alert-inner--text">{{message}}</span>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			{% endif%}
+						{% endfor %}
+
+	{% endif %}
+
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid username is required">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+							<input type="submit" value="Login" class="login100-form-btn btn-primary">
+					</div>
+
+					<p style="text-align: center;"> OR </p>
+					
+					
+
+					<div class="text-center pt-2">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a  href="{% url 'password_reset' %}" class="txt2">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center pt-1">
+						<a class="txt2" href="{% url 'register' %}">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="particles-js" style="position: absolute; z-index: -1; top: 0%;height: 99%; width: 100%;"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="1387" height="893"></canvas></div>
+	</div>
+
+	<!-- Adon Scripts -->
+	<!-- Core -->
+	<script src="{% static 'assets/plugins/jquery/dist/jquery.min.js'%}"></script>
+	<script src="{% static 'assets/js/popper.js'%}"></script>
+	<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'assets/js/particles/particles.js'%}"></script>
+	<script src="{% static 'assets/js/particles/app.js'%}"></script>
+	<script>
+		$(".alert-danger").delay(3200).fadeOut(300);
+	</script>
+</body>
+
+<!-- Mirrored from spruko.com/demo/adon/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Dec 2018 09:46:44 GMT -->
+</html>

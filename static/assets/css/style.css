@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    margin: 20px auto;
+}
+
+.info-card {
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    margin: 5px auto;
+}
+
+.info-card > h3 {
+    margin: 2px !important;
+    white-space: nowrap;
+}
+
+.info-card > p {
+    margin: 2px !important;
+}
