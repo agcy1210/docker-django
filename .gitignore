@@ -10,4 +10,4 @@ venv
 ./venv
 /venv
 venv/
-db.sqlite3
+    

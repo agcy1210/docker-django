@@ -1,0 +1,292 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- Mirrored from spruko.com/demo/adon/forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Dec 2018 09:46:32 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="Fully Responsive Bootstrap 4 Admin Dashboard Template" name="description">
+    <meta content="Spruko" name="author">
+
+    <!-- Title -->
+    <title>Package Tracker - Dashboard</title>
+
+    <!-- Favicon -->
+    <link href="{% static 'assets/img/logo.png' %}" rel="icon" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="{% static 'assets/css/icons.css'%}" rel="stylesheet">
+
+    <!--Bootstrap.min css-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css'%}">
+
+    <!-- Adon CSS -->
+    <link href="{% static 'assets/css/dashboard.css'%}" rel="stylesheet" type="text/css">
+
+    <!-- Custom scroll bar css-->
+    <link href="{% static 'assets/plugins/customscroll/jquery.mCustomScrollbar.css'%}" rel="stylesheet" />
+
+    <!-- Sidemenu Css -->
+    <link href="{% static 'assets/plugins/toggle-sidebar/css/sidemenu.css'%}" rel="stylesheet">
+
+    <!--Select2 css-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/select2/select2.css'%}">
+
+</head>
+
+<body class="app sidebar-mini rtl">
+    <div id="global-loader"></div>
+    <div class="page">
+        <div class="page-main">
+            <!-- Sidebar menu-->
+            <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+            <aside class="app-sidebar ">
+                <div class="sidebar-img">
+                    <a class="navbar-brand" href="index-2.html"><img alt="..." class="navbar-brand-img main-logo"
+                            src="{% static 'assets/img/full-logo.png' %}"> <img alt="..." class="navbar-brand-img logo"
+                            src="{% static 'assets/img/logo.png' %}"></a>
+                    <ul class="side-menu">
+                        <li class="slide active is-expanded">
+                            <a class="side-menu__item active" href="#"><i class="side-menu__icon fe fe-home"></i><span
+                                    class="side-menu__label">Dashboard</span></a>
+                        </li>
+                        <li class="slide">
+                            <a class="side-menu__item" href="#"><i class="side-menu__icon fe fe-settings"></i><span
+                                    class="side-menu__label">Settings</span></a>
+                        </li>
+                        <li class="slide">
+                            <a class="side-menu__item" href="#"><i class="side-menu__icon fe fe-map"></i><span
+                                    class="side-menu__label">Map</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <!-- Sidebar menu-->
+
+            <!-- app-content-->
+            <div class="app-content ">
+                <div class="side-app">
+                    <div class="main-content">
+                        <div class="p-2 d-block d-sm-none navbar-sm-search">
+                            <!-- Form -->
+                            <form class="navbar-search navbar-search-dark form-inline ml-lg-auto">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                        </div><input class="form-control" placeholder="Search" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Top navbar -->
+                        <nav class="navbar navbar-top  navbar-expand-md navbar-dark" id="navbar-main">
+                            <div class="container-fluid">
+                                <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-toggle="sidebar"
+                                    href="#"></a>
+
+                                <!-- Horizontal Navbar -->
+                                <ul class="navbar-nav align-items-center d-none d-xl-block">
+
+                                    <li class="nav-item dropdown ">
+
+                                        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right ">
+
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" class="dropdown-item text-center">View all Notification</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+
+
+                                <!-- User -->
+                                <!-- User -->
+                                <ul class="navbar-nav align-items-center ">
+                                    <li class="nav-item dropdown">
+                                        <a aria-expanded="false" aria-haspopup="true"
+                                            class="nav-link pr-md-0 mr-md-2 pl-1" data-toggle="dropdown" href="#"
+                                            role="button">
+                                            <div class="media align-items-center">
+                                                <span class="avatar avatar-sm rounded-circle"><img
+                                                        alt="Image placeholder"
+                                                        src="{% static 'assets/img/admin.png'%}"></span>
+
+                                            </div>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                                            <div class=" dropdown-header noti-title text-center border-bottom pb-3">
+                                                {% if user.is_authenticated %}
+                                                <h3 class="text-capitalize text-dark mb-1">{{user.username}}</h3>
+                                            </div>
+                                            <form action="{% url 'logout' %}" id="logout" method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden">
+                                            </form>
+                                            <div></div><a class="dropdown-item" style="cursor: pointer;"
+                                                onclick="logout()"><i class="ni ni-user-run"></i>
+                                                <span>Logout</span></a>
+                                        </div>
+
+                                        {% endif %}
+                                    </li>
+
+                                    <li class="nav-item dropdown d-none d-md-flex">
+                                        <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-0"
+                                            data-toggle="dropdown" href="#" role="button">
+                                            <div class="media align-items-center">
+                                                <i class="fe fe-bell f-30 "></i>
+                                            </div>
+                                        </a>
+                                        <div
+                                            class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow dropdown-menu-right">
+                                            <a href="#" class="dropdown-item d-flex">
+                                                <div>
+                                                    <strong>Someone likes our posts.</strong>
+                                                    <div class="small text-muted">3 hours ago</div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="dropdown-item d-flex">
+                                                <div>
+                                                    <strong> 3 New Comments</strong>
+                                                    <div class="small text-muted">5 hour ago</div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="dropdown-item d-flex">
+                                                <div>
+                                                    <strong> Server Rebooted.</strong>
+                                                    <div class="small text-muted">45 mintues ago</div>
+                                                </div>
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" class="dropdown-item text-center">View all Notification</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item d-none d-md-flex">
+                                        <div class="dropdown d-none d-md-flex mt-2 ">
+                                            <a class="nav-link full-screen-link  pr-0"><i
+                                                    class="fe fe-maximize-2 floating " id="fullscreen-button"></i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <!-- Top navbar-->
+
+                        <!-- Page content -->
+                        <div class="container-fluid pt-8">
+                            <div class="page-header mt-0  p-3">
+                                <h3 class="mb-sm-0">Basic Form</h3>
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="#"><i class="fe fe-home"></i></a></li>
+
+                                </ol>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card shadow">
+                                        <div class="card-header">
+                                            <h2 class="mb-0">Default forms with labels</h2>
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="{% url 'home' %}" id="home" method="post">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Enter First Name</label>
+                                                            <input type="text" class="form-control" name="firstname"
+                                                                placeholder="First Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Enter Last Name</label>
+                                                            <input type="text" class="form-control" name="lastname"
+                                                                placeholder="Last Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Enter Age</label>
+                                                            <input type="text" class="form-control" name="age"
+                                                                placeholder="Enter age">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label class="form-label">Enter email</label>
+                                                            <input type="email" class="form-control" name="email"
+                                                                placeholder="Enter email id">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="text-align: center;">
+                                                    <button type="Submit"
+                                                        class="btn btn-primary mt-1 mb-1">Submit</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--app-content-->
+    </div>
+    </div>
+
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
+    <!-- Core -->
+    <script src="{% static 'assets/plugins/jquery/dist/jquery.min.js'%}"></script>
+    <script src="{% static 'assets/js/popper.js'%}"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/plugins/chart-circle/circle-progress.min.js'%}"></script>
+
+    <!-- Optional JS -->
+    <script src="{% static 'assets/plugins/chart.js/dist/Chart.min.js'%}"></script>
+    <script src="{% static 'assets/plugins/chart.js/dist/Chart.extension.js'%}"></script>
+
+    <!--Select2 js-->
+    <script src="{% static 'assets/plugins/select2/select2.full.js'%}"></script>
+
+    <!-- Data tables -->
+    <script src="{% static 'assets/plugins/datatable/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'assets/plugins/datatable/dataTables.bootstrap4.min.js'%}"></script>
+
+    <!-- Fullside-menu Js-->
+    <script src="{% static 'assets/plugins/toggle-sidebar/js/sidemenu.js'%}"></script>
+
+    <!-- Custom scroll bar Js-->
+    <script src="{% static 'assets/plugins/customscroll/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+
+    <!-- Adon JS -->
+    <script src="{% static 'assets/js/custom.js'%}"></script>
+    <script src="{% static 'assets/js/dashboard-finance.js'%}"></script>
+    <script src="{% static 'assets/js/select2.js'%}"></script>
+
+    <script>
+        function logout() {
+            document.getElementById('logout').submit();
+        }
+    </script>
+
+</body>
+
+<!-- Mirrored from spruko.com/demo/adon/forms.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 30 Dec 2018 09:46:32 GMT -->
+
+</html>
