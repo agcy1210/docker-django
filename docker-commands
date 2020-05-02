@@ -16,7 +16,7 @@ $docker exec -t -i 123 bash
 5) Stop the container running in background with container_name = 'container_name'
 $docker stop container_name
 
-6) Remove docker image named 'image_name'
+6) To Remove docker image named 'image_name'
 $docker image rm image_name
 
 7) Pushing to docker repo
